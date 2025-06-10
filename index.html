@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VikaasGarh - Coming Soon</title>
+    <style>
+        /* General Body & Reset */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+            background-color: #0d0d1e; /* Dark bluish-black base */
+            color: #b0b0c0; /* Light gray for most text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Hide anything outside viewport */
+            position: relative; /* For background elements */
+        }
+
+        /* Subtle Grid Pattern */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px; /* Adjust grid size */
+            opacity: 0.8;
+            pointer-events: none; /* Allow clicks through */
+        }
+
+        /* Scattered Particles */
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow:
+                10vw 10vh 2px 2px rgba(255,255,255,0.05),
+                20vw 80vh 1px 1px rgba(255,255,255,0.05),
+                80vw 30vh 1px 1px rgba(255,255,255,0.05),
+                50vw 50vh 1px 1px rgba(255,255,255,0.05),
+                70vw 15vh 1px 1px rgba(255,255,255,0.05),
+                30vw 90vh 1px 1px rgba(255,255,255,0.05);
+            pointer-events: none;
+        }
+
+        /* Abstract Code Brackets */
+        .code-bracket {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 2px solid #5B83FF; /* Blue color */
+            transform: rotate(45deg);
+            opacity: 0.3;
+            filter: blur(0.5px);
+            pointer-events: none;
+            box-shadow: 0 0 15px #5B83FF;
+        }
+        .code-bracket.top-left {
+            top: 80px;
+            left: 100px;
+            transform: rotate(-10deg) scale(0.9);
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
+        .code-bracket.bottom-right {
+            bottom: 80px;
+            right: 100px;
+            transform: rotate(170deg) scale(0.9);
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+        .code-bracket.top-left-small {
+            top: 30px;
+            left: 40px;
+            width: 30px;
+            height: 30px;
+            transform: rotate(-10deg) scale(0.7);
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+            opacity: 0.2;
+            box-shadow: 0 0 10px #5B83FF;
+        }
+        .code-bracket.bottom-right-small {
+            bottom: 30px;
+            right: 40px;
+            width: 30px;
+            height: 30px;
+            transform: rotate(170deg) scale(0.7);
+            border-top-color: transparent;
+            border-right-color: transparent;
+            opacity: 0.2;
+            box-shadow: 0 0 10px #5B83FF;
+        }
+
+        /* Main Content Container */
+        .content-wrapper {
+            max-width: 800px;
+            width: 90%;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        /* Main Heading */
+        h1 {
+            font-size: 3.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        h1 .company-name {
+            display: block;
+            font-size: 1.5em;
+            color: #FFFFFF;
+            margin-bottom: 10px;
+        }
+        h1 span.white {
+            color: #FFFFFF;
+        }
+        h1 span.blue {
+            color: #5B83FF;
+        }
+
+        /* Description Paragraph */
+        .description {
+            font-size: 1.2em;
+            line-height: 1.6;
+            max-width: 650px;
+            margin: 0 auto 40px auto; /* Centered with bottom margin */
+            color: #d0d0d0;
+        }
+
+        /* Social Media Section */
+        .social-connect {
+            font-size: 1em;
+            color: #b0b0c0;
+            margin-bottom: 20px; /* Space above icons */
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            font-size: 1.8em;
+        }
+        .social-icons a {
+            color: #b0b0c0;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease; /* Added transform for hover effect */
+        }
+        .social-icons a:hover {
+            color: #5B83FF;
+            transform: translateY(-5px); /* Lift effect on hover */
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 50px;
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8em;
+            }
+            h1 .company-name {
+                font-size: 1.2em;
+            }
+            .description {
+                font-size: 1em;
+            }
+            .code-bracket {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            h1 .company-name {
+                font-size: 1em;
+            }
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="code-bracket top-left"></div>
+    <div class="code-bracket top-left-small"></div>
+    <div class="code-bracket bottom-right"></div>
+    <div class="code-bracket bottom-right-small"></div>
+
+    <div class="content-wrapper">
+        <h1>
+            <span class="company-name">VikaasGarh</span>
+            <span class="white">Coming</span> <span class="blue">Soon</span>
+        </h1>
+        <p class="description">
+            At <strong>VikaasGarh</strong>, we're working on something exciting. Our team is crafting an innovative solution that will change the way you think about...
+        </p>
+
+        <div class="social-connect">Connect with us:</div>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/company/vikaasgarh/" target="_blank" aria-label="LinkedIn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.118-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+            </a>
+            <a href="https://www.instagram.com/vikaas.garh/#" target="_blank" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.204-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.069-1.644-.069-4.849 0-3.204.012-3.584.069-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.21-6.78 2.618-6.99 6.98-.059 1.281-.073 1.685-.073 4.948 0 3.26.014 3.666.072 4.947.21 4.358 2.618 6.78 6.98 6.99.28.016.447.033.626.045.39.026.793.045 1.199.045.405 0 .81-.019 1.2-.045.179-.012.345-.029.626-.045 4.358-.211 6.78-2.618 6.98-6.99.058-1.281.073-1.685.073-4.947 0-3.26-.014-3.667-.072-4.947-.21-4.358-2.618-6.78-6.98-6.99-1.28-.059-1.684-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.44-.645-1.44-1.44s.644-1.44 1.44-1.44c.795 0 1.439.645 1.439 1.44s-.644 1.44-1.439 1.44z"/>
+                </svg>
+            </a>
+            <a href="https://x.com/vikaasgarh" target="_blank" aria-label="X (formerly Twitter)">
+             
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.901 1.144h3.68L15.344 9.17 24 22.846h-7.404L10.237 12.01l-6.84 10.836H0L8.71 11.895 1.058 1.144h7.525L13.111 7.74l5.79-6.596zM15.42 20.306h2.825L6.425 3.738H3.4L15.42 20.306z"/>
+                </svg>
+            </a>
+            <br> 
+
+        </br>
+
+        </div>
+
+          <footer class="mt-16 text-gray-600 text-sm">
+            &copy; 2025 VikaasGarh. All rights reserved.
+        </footer>
+    </div>
+
+   
+</body>
+</html>
